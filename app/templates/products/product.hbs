@@ -1,0 +1,9 @@
+<div class="details">
+    <img src={{this.model.image}} alt={{this.model.title}}>
+    <div>
+        <h2>{{this.model.title}}</h2>
+        <p>{{this.model.description}}</p>
+        <strong>${{this.model.price}}</strong>
+    </div>
+    <LinkTo @route="products">Back to Products</LinkTo>
+</div>
