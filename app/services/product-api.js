@@ -16,16 +16,14 @@ export default class ProductApiService extends Service{
     async getProductById(id) {
         const response = await fetch(`${BASE_URL}/${id}`);
 
-        if (!response.ok) {
-            throw new Error('PRODUCT_NOT_FOUND');
+        const data = await response.json();
+
+        if (!data || !data.id) {
+            const error = new Error('PRODUCT_NOT_FOUND');
+            error.status = 404;
+            throw error;
         }
 
-        const text = await response.text();
-
-        if (!text) {
-            throw new Error('PRODUCT_NOT_FOUND');
-        }
-
-        return JSON.parse(text);
+        return data;
     }
 }

@@ -3,12 +3,17 @@ import { inject as service } from "@ember/service";
 
 export default class ProductsProductRoute extends Route {
     @service productApi;
+    @service router;
 
-    model({ product_id }) {
-        try {
-            return this.productApi.getProductById(product_id);
-        } catch (error) {
-            this.router.replaceWith('not-found');
-        }
+    async model({ product_id }) {
+        return await this.productApi.getProductById(product_id);
     }
+
+    error(error) {
+    if (error.status === 404) {
+      this.router.transitionTo('not-found');
+      return false;
+    }
+    return true;
+  }
 }
