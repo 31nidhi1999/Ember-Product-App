@@ -10,5 +10,7 @@ Router.map(function () {
   this.route('products', function () {
     this.route('product', { path: '/:product_id' });
   });
+  this.route('cart');
+  this.route('checkout');
   this.route('not-found', { path: '/*path' });
 });
