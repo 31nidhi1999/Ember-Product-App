@@ -15,15 +15,20 @@ export default class ProductApiService extends Service{
 
     async getProductById(id) {
         const response = await fetch(`${BASE_URL}/${id}`);
-
-        const data = await response.json();
-
-        if (!data || !data.id) {
+        const text = await response.text();
+        
+        if (!text) {
             const error = new Error('PRODUCT_NOT_FOUND');
             error.status = 404;
             throw error;
         }
-
-        return data;
+        
+        try {
+            return JSON.parse(text);
+        } catch (e) {
+            const error = new Error('PRODUCT_NOT_FOUND');
+            error.status = 404;
+            throw error;
+        }
     }
 }
