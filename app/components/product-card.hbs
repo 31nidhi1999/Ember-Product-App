@@ -3,3 +3,6 @@
   <h3>{{@product.title}}</h3>
   <p class="price">${{@product.price}}</p>
 </LinkTo>
+<button {{on "click" (fn this.addToCart @product)}} class="btn btn-sm">
+  Add to Cart
+</button>
