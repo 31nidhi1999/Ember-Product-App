@@ -1,0 +1,53 @@
+<div class="cart-page">
+  <h1>Shopping Cart</h1>
+  
+  {{#if this.cart.items.length}}
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.cart.items as |item|}}
+          <tr>
+            <td>{{item.title}}</td>
+            <td>${{item.price}}</td>
+            <td>
+              <input 
+                type="number" 
+                value={{item.quantity}} 
+                min="1"
+                {{on "change" (fn this.updateQuantity item.id)}}
+              />
+            </td>
+            <td>${{(multiply item.price item.quantity)}}</td>
+            <td>
+              <button {{on "click" (fn this.removeFromCart item.id)}}>
+                Remove
+              </button>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    
+    <div class="cart-summary">
+      <h3>Cart Summary</h3>
+      <p>Total Items: {{this.cart.totalItems}}</p>
+      <p>Total Price: ${{this.cart.totalPrice}}</p>
+    </div>
+    
+    <div class="cart-actions">
+      <LinkTo @route="products" class="btn">Continue Shopping</LinkTo>
+      <LinkTo @route="checkout" class="btn btn-primary">Proceed to Checkout</LinkTo>
+    </div>
+  {{else}}
+    <p>Your cart is empty.</p>
+    <LinkTo @route="products" class="btn">Start Shopping</LinkTo>
+  {{/if}}
+</div>
