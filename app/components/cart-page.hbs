@@ -8,7 +8,7 @@
           <th>Product</th>
           <th>Price</th>
           <th>Quantity</th>
-          {{!-- <th>Total</th> --}}
+          <th>Total</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -25,7 +25,7 @@
                 {{on "change" (fn this.updateQuantity item.id)}}
               />
             </td>
-            {{!-- <td>\${{(multiply item.price item.quantity)}}</td> --}}
+            <td>${{multiply item.price item.quantity}}</td>
             <td>
               <button {{on "click" (fn this.removeFromCart item.id)}}>
                 Remove
