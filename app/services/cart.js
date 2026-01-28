@@ -10,10 +10,7 @@ export default class CartService extends Service {
     if (existingItem) {
       existingItem.quantity += 1;
     } else {
-      this.items.push({
-        ...product,
-        quantity: 1
-      });
+      this.items = [... this.items, {...product, quantity : 1 }]
     }
   }
 
@@ -22,10 +19,10 @@ export default class CartService extends Service {
   }
 
   updateQuantity(productId, quantity) {
-    const item = this.items.find(item => item.id === productId);
-    if (item) {
-      item.quantity = quantity;
-    }
+    const q = Number(quantity) || 1;
+    this.items = this.items.map(item =>
+      item.id === productId ? { ...item, quantity: q } : item
+    );
   }
 
   get totalPrice() {
