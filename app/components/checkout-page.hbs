@@ -1,0 +1,70 @@
+<div class="checkout-page">
+ <h1>Checkout</h1>
+ 
+ {{#if this.cart.items.length}}
+   <div class="checkout-container">
+     <div class="order-summary">
+       <h3>Order Summary</h3>
+       <ul>
+         {{#each this.cart.items as |item|}}
+           <li>
+             {{item.title}} x {{item.quantity}} = ${{multiply item.price item.quantity}}
+           </li>
+         {{/each}}
+       </ul>
+       <hr />
+       <h4>Total: ${{this.cart.totalPrice}}</h4>
+     </div>
+     
+     <form class="checkout-form" {{on "submit" this.completeCheckout}}>
+       <fieldset>
+         <legend>Shipping Information</legend>
+         <div class="form-group">
+           <label for="name">Full Name</label>
+           <input id="name" type="text" required />
+         </div>
+         <div class="form-group">
+           <label for="email">Email</label>
+           <input id="email" type="email" required />
+         </div>
+         <div class="form-group">
+           <label for="address">Address</label>
+           <input id="address" type="text" required />
+         </div>
+         <div class="form-group">
+           <label for="city">City</label>
+           <input id="city" type="text" required />
+         </div>
+         <div class="form-group">
+           <label for="zip">Zip Code</label>
+           <input id="zip" type="text" required />
+         </div>
+       </fieldset>
+       
+       <fieldset>
+         <legend>Payment Information</legend>
+         <div class="form-group">
+           <label for="card">Card Number</label>
+           <input id="card" type="text" placeholder="1234 5678 9012 3456" required />
+         </div>
+         <div class="form-group">
+           <label for="expiry">Expiry Date</label>
+           <input id="expiry" type="text" placeholder="MM/YY" required />
+         </div>
+         <div class="form-group">
+           <label for="cvv">CVV</label>
+           <input id="cvv" type="text" placeholder="123" required />
+         </div>
+       </fieldset>
+       
+       <div class="checkout-actions">
+         <LinkTo @route="cart" class="btn">Back to Cart</LinkTo>
+         <button type="submit" class="btn btn-primary">Complete Order</button>
+       </div>
+     </form>
+   </div>
+ {{else}}
+   <p>Your cart is empty. Please add items before checkout.</p>
+   <LinkTo @route="products" class="btn">Continue Shopping</LinkTo>
+ {{/if}}
+</div>
