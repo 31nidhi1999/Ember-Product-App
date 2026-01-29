@@ -46,3 +46,162 @@
   text-align: center;
   padding: 3rem;
 }
+
+.cart-page {
+  max-width: 980px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+
+.cart-table thead {
+  background: #f7f7f7;
+}
+
+.cart-table th,
+.cart-table td {
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid #eef0f2;
+}
+
+.cart-table th {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.cart-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.cart-table td .price,
+.cart-table td .total {
+  font-weight: 600;
+}
+
+.cart-table input[type="number"] {
+  width: 5rem;
+  padding: 0.25rem 0.4rem;
+  font-size: 0.9rem;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.cart-summary {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: #fafafa;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #f0f0f0;
+}
+
+.cart-summary h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.cart-summary p {
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.cart-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+/* Button styles used across the app (do not rename) */
+.btn {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.9rem;
+  border: 1px solid #cfcfcf;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #222;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.12s ease, transform 0.08s ease;
+}
+
+.btn:hover {
+  background: #f5f5f5;
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background: #0069e0;
+  border-color: #0069e0;
+}
+
+/* Small button variant used in product templates */
+.btn-sm {
+  padding: 0.2rem 0.45rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+/* Checkout / order summary tweaks */
+.checkout-page .order-summary ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5rem 0;
+}
+
+.checkout-page .order-summary li {
+  padding: 0.25rem 0;
+  border-bottom: 1px dashed #eee;
+}
+
+.checkout-page .checkout-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+/* small screens */
+@media (max-width: 640px) {
+  .cart-table th,
+  .cart-table td {
+    padding: 0.5rem;
+  }
+
+  .cart-table input[type="number"] {
+    width: 4.2rem;
+  }
+
+  .cart-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-actions {
+    width: 100%;
+  }
+}
