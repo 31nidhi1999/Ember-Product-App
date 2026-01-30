@@ -471,4 +471,53 @@ a[href="/cart/"]:hover {
   }
 }
 
+/* Tic Tac Toe styles */
+.tic-tac-toe {
+  max-width: 360px;
+  margin: 2rem auto;
+  text-align: center;
+  padding: 1rem;
+}
+
+.ttt-status {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.ttt-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.ttt-cell {
+  width: 100%;
+  padding: 1.25rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border: 1px solid #d9d9d9;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.ttt-cell[data-player="X"] {
+  color: #d9534f;
+}
+
+.ttt-cell[data-player="O"] {
+  color: #2563eb;
+}
+
+.ttt-actions {
+  margin-top: 0.5rem;
+}
+
+/* responsive tweak */
+@media (max-width: 420px) {
+  .tic-tac-toe { max-width: 320px; padding: 0.75rem; }
+  .ttt-cell { padding: 0.9rem 0; font-size: 1rem; }
+}
+
 /* End of additions */
