@@ -12,5 +12,10 @@ Router.map(function () {
   });
   this.route('cart');
   this.route('checkout');
+  this.route('fun', function() {
+    this.route('games', function() {
+      this.route('tic-tac-toe');
+    });
+  });
   this.route('not-found', { path: '/*path' });
 });
