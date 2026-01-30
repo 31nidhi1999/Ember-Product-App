@@ -1,0 +1,15 @@
+<div class="tic-tac-toe">
+  <h2>Tic Tac Toe</h2>
+
+  <div class="ttt-board" role="grid" aria-label="Tic Tac Toe board">
+    {{#each this.board as |cell index|}}
+      <button class="ttt-cell" data-player={{cell}} type="button">
+        {{cell}}
+      </button>
+    {{/each}}
+  </div>
+
+  <div class="ttt-actions">
+    <button class="btn" type="button" {{on "click" this.reset}}>Reset</button>
+  </div>
+</div>
