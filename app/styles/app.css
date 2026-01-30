@@ -185,6 +185,75 @@
   margin-top: 1rem;
 }
 
+/* simple light (default) */
+body {
+  background: #ffffff;
+  color: #0f1724;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+/* card / table / panels (light) */
+.card,
+.cart-table,
+.checkout-page .order-summary,
+.checkout-page .checkout-form,
+.cart-summary {
+  background: #ffffff;
+  color: #0f1724;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
+}
+
+/* buttons / cta (light) */
+.btn,
+a[href="/cart"],
+.theme-toggle {
+  background: #007bff;
+  color: #ffffff;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+/* inputs (light) */
+input,
+textarea,
+select {
+  border: 1px solid #d9d9d9;
+  color: #0f1724;
+  background: transparent;
+}
+
+/* dark theme overrides when body[data-theme="dark"] is present */
+body[data-theme="dark"] {
+  background: #071028;
+  color: #e6eef8;
+}
+
+body[data-theme="dark"] .card,
+body[data-theme="dark"] .cart-table,
+body[data-theme="dark"] .checkout-page .order-summary,
+body[data-theme="dark"] .checkout-page .checkout-form,
+body[data-theme="dark"] .cart-summary {
+  background: #0b1220;
+  color: #e6eef8;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+body[data-theme="dark"] .btn,
+body[data-theme="dark"] a[href="/cart"],
+body[data-theme="dark"] .theme-toggle {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+body[data-theme="dark"] input,
+body[data-theme="dark"] textarea,
+body[data-theme="dark"] select {
+  border: 1px solid #21303f;
+  color: #e6eef8;
+  background: transparent;
+}
+
 /* small screens */
 @media (max-width: 640px) {
   .cart-table th,
@@ -222,7 +291,7 @@ a[href="/cart/"] {
   color: var(--primary-contrast);
   background: var(--primary);
   border-radius: 8px;
-  border: 1px solid rgba(0,0,0,0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: var(--shadow);
   text-decoration: none;
   transition: transform 120ms ease, background-color 120ms ease;
@@ -233,3 +302,173 @@ a[href="/cart/"]:hover {
   transform: translateY(-2px);
   background: var(--accent);
 }
+
+/* Ensure the link is accessible on small screens */
+@media (max-width: 540px) {
+  a[href="/cart"],
+  a[href="/cart/"] {
+    right: 0.6rem;
+    top: 0.8rem;
+    padding: 0.35rem 0.6rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Checkout page improvements */
+.checkout-page {
+  max-width: 980px;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.checkout-page .checkout-container {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  margin-top: 1rem;
+}
+
+/* Order summary card */
+.checkout-page .order-summary {
+  width: 320px;
+  background: var(--card);
+  color: var(--text);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
+  flex: 0 0 320px;
+}
+
+/* Checkout form card */
+.checkout-page .checkout-form {
+  flex: 1 1 auto;
+  background: var(--card);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
+}
+
+/* Form groups & inputs */
+.checkout-page .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.checkout-page label {
+  font-size: 0.92rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* show required star for labels (keeps class names unchanged) */
+.checkout-page .form-group label::after {
+  content: " *";
+  color: var(--danger);
+  font-weight: 700;
+  margin-left: 0.25rem;
+  font-size: 0.9rem;
+}
+
+/* inputs */
+.checkout-page input[type="text"],
+.checkout-page input[type="email"],
+.checkout-page input[type="number"],
+.checkout-page input[type="tel"],
+.checkout-page input[type="password"],
+.checkout-page textarea,
+.checkout-page select {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.checkout-page input:focus,
+.checkout-page textarea:focus,
+.checkout-page select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.08);
+}
+
+/* visual cue for required inputs */
+.checkout-page input[required],
+.checkout-page textarea[required],
+.checkout-page select[required] {
+  box-shadow: inset 0 0 0 3px rgba(243, 156, 18, 0.04);
+}
+
+/* Checkout actions alignment */
+.checkout-page .checkout-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  justify-content: flex-end;
+}
+
+/* small screen handling */
+@media (max-width: 880px) {
+  .checkout-page .checkout-container {
+    flex-direction: column-reverse;
+    gap: 0.75rem;
+  }
+
+  .checkout-page .order-summary {
+    width: 100%;
+    flex: none;
+  }
+
+  .checkout-page .checkout-actions {
+    justify-content: stretch;
+    flex-direction: column;
+  }
+}
+
+/* subtle tweaks to keep overall app buttons consistent */
+.btn {
+  border-radius: 8px; /* slightly rounder buttons globally */
+}
+
+/* Make sure cart-table and checkout cards follow theme */
+.cart-table,
+.checkout-page .order-summary,
+.checkout-page .checkout-form,
+.cart-summary {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+}
+
+/* Theme toggle button styles */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 5.6rem; /* sits left of the View Cart link (which is at right:1rem) */
+  z-index: 1101;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.82rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+/* mobile adjustment */
+@media (max-width: 540px) {
+  .theme-toggle {
+    right: 4.6rem;
+    top: 0.8rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+/* End of additions */
