@@ -4,6 +4,8 @@
   <div class="ttt-status" role="status">
     {{#if this.winner}}
       Winner :  {{this.winner}}
+    {{else if this.isDraw}}
+      Draw : {{this.isDraw}}
     {{else}}
       Current : {{this.currentPlayer}}
     {{/if}}

@@ -37,6 +37,13 @@ export default class TicTacToeComponent extends Component {
       this.isDraw = false;
       return;
     }
+
+    if (!newBoard.includes(null)) {
+      this.isDraw = true;
+      this.winner = null;
+      return;
+    }
+
     this.current = this.current === 'X' ? 'O' : 'X';
   }
 
