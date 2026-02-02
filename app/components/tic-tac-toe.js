@@ -6,6 +6,7 @@ export default class TicTacToeComponent extends Component {
   @tracked board = Array(9).fill(null);
   @tracked current = 'X';
   @tracked winner = null;
+  @tracked isDraw = false;
 
   get currentPlayer(){
     return this.current;
@@ -13,7 +14,7 @@ export default class TicTacToeComponent extends Component {
 
   checkWinner(board){
     const lines = [[0,1,2],[3,4,5,],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-    for (let[a,b,c] of board){
+    for (let [a,b,c] of lines){
       if(board[a] === board[b] && board[b]===board[c] && board[c] === board[a]){
         return board[a];
       }
@@ -22,23 +23,28 @@ export default class TicTacToeComponent extends Component {
   }
 
   @action
-  makeMove(index){
+  makeMove(index) {
+    if (this.winner || this.board[index]) {
+      return;
+    }
+
     const newBoard = [...this.board];
     newBoard[index] = this.current;
     this.board = newBoard;
     const whoWin = this.checkWinner(newBoard);
     if(whoWin){
       this.winner = whoWin;
+      this.isDraw = false;
+      return;
     }
     this.current = this.current === 'X' ? 'O' : 'X';
   }
 
   @action
   reset() {
-    console.log('rest start');
     this.board = Array(9).fill(null);
     this.current = 'X';
     this.winner = null;
-    console.log('rest end');
+    this.isDraw = false;
   }
 }
