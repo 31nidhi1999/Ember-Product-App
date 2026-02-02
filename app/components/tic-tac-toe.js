@@ -35,5 +35,7 @@ export default class TicTacToeComponent extends Component {
   @action
   reset() {
     this.board = Array(9).fill(null);
+    this.current = 'X';
+    this.winner = null;
   }
 }
