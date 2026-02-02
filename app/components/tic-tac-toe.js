@@ -21,6 +21,7 @@ export default class TicTacToeComponent extends Component {
     }
   }
 
+  @action
   makeMove(index){
     const newBoard = [...this.board];
     newBoard[index] = this.current;
@@ -34,8 +35,10 @@ export default class TicTacToeComponent extends Component {
 
   @action
   reset() {
+    console.log('rest start');
     this.board = Array(9).fill(null);
     this.current = 'X';
     this.winner = null;
+    console.log('rest end');
   }
 }

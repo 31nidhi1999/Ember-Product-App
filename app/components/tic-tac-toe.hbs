@@ -1,9 +1,19 @@
 <div class="tic-tac-toe">
   <h2>Tic Tac Toe</h2>
 
+  <div class="ttt-status" role="status">
+    {{#if this.winner}}
+      Winner :  {{this.winner}}
+    {{else if this.Draw}}
+      Draw
+    {{else}}
+      Current : {{this.currentPlayer}}
+    {{/if}}
+  </div>
+
   <div class="ttt-board" role="grid" aria-label="Tic Tac Toe board">
     {{#each this.board as |cell index|}}
-      <button class="ttt-cell" data-player={{cell}} type="button">
+      <button class="ttt-cell" data-player={{cell}} type="button" {{on 'click' (fn this.makeMove index)}}>
         {{cell}}
       </button>
     {{/each}}
