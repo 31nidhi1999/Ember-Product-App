@@ -1,0 +1,57 @@
+import Component from "@glimmer/component";
+import { tracked } from "@glimmer/tracking";
+import { action } from "@ember/object";
+
+export default class TicTacToeComponent extends Component {
+  @tracked board = Array(9).fill(null);
+  @tracked current = 'X';
+  @tracked winner = null;
+  @tracked isDraw = false;
+
+  get currentPlayer(){
+    return this.current;
+  }
+
+  checkWinner(board){
+    const lines = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+    for (let [a,b,c] of lines){
+      if(board[a] === board[b] && board[b]===board[c] && board[c] === board[a]){
+        return board[a];
+      }
+    }
+    return null;
+  }
+
+  @action
+  makeMove(index) {
+    if (this.winner || this.board[index]) {
+      return;
+    }
+
+    const newBoard = [...this.board];
+    newBoard[index] = this.current;
+    this.board = newBoard;
+    const whoWin = this.checkWinner(newBoard);
+    if(whoWin){
+      this.winner = whoWin;
+      this.isDraw = false;
+      return;
+    }
+
+    if (!newBoard.includes(null)) {
+      this.isDraw = true;
+      this.winner = null;
+      return;
+    }
+
+    this.current = this.current === 'X' ? 'O' : 'X';
+  }
+
+  @action
+  reset() {
+    this.board = Array(9).fill(null);
+    this.current = 'X';
+    this.winner = null;
+    this.isDraw = false;
+  }
+}
