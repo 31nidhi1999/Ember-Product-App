@@ -5,6 +5,7 @@ import { action } from "@ember/object";
 export default class TicTacToeComponent extends Component {
   @tracked board = Array(9).fill(null);
   @tracked current = 'X';
+  @tracked winner = null;
 
   get currentPlayer(){
     return this.current;
@@ -18,6 +19,17 @@ export default class TicTacToeComponent extends Component {
       }
       return null;
     }
+  }
+
+  makeMove(index){
+    const newBoard = [...this.board];
+    newBoard[index] = this.current;
+    this.board = newBoard;
+    const whoWin = this.checkWinner(newBoard);
+    if(whoWin){
+      this.winner = whoWin;
+    }
+    this.current = this.current === 'X' ? 'O' : 'X';
   }
 
   @action
