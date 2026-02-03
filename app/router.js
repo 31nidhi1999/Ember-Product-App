@@ -12,5 +12,6 @@ Router.map(function () {
   });
   this.route('cart');
   this.route('checkout');
+  this.route('tooltip');
   this.route('not-found', { path: '/*path' });
 });
