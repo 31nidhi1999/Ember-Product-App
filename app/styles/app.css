@@ -472,3 +472,41 @@ a[href="/cart/"]:hover {
 }
 
 /* End of additions */
+
+/* minimal tooltip styling - append to your CSS */
+
+/* wrapper makes absolute positioning relative to the trigger */
+.tooltip-wrapper {
+  position: relative;
+  display: inline-block; /* keeps wrapper size to trigger size */
+}
+
+/* trigger style (keeps it inline and focusable) */
+.tooltip-trigger {
+  display: inline-block;
+  outline: none;
+}
+
+/* tooltip box positioned below the trigger, hidden by default */
+.tooltip-content {
+  position: absolute;
+  left: 50%;
+  top: 100%; /* place below the trigger */
+  transform: translateX(-50%);
+  margin-top: 6px;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  white-space: normal;
+  max-width: 220px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  z-index: 1000;
+  display: none; /* hidden by default */
+}
+
+/* show when aria-hidden explicitly false */
+.tooltip-content[aria-hidden="false"] {
+  display: block;
+}
