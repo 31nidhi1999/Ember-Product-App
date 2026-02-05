@@ -12,5 +12,10 @@ Router.map(function () {
   });
   this.route('cart');
   this.route('checkout');
+  this.route('tooltip');
+  this.route('bookings');
+  this.route('plan', function () {
+    this.route('step-1');
+  });
   this.route('not-found', { path: '/*path' });
 });
