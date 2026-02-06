@@ -1,3 +1,5 @@
 export default function Step2(){
-    return(<></>)
+    return(<>
+        <h1>Step 2 Page</h1>
+    </>)
 }
